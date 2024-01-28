@@ -5,16 +5,15 @@ import { UsersService } from '../users/users.service';
 export class AuthenticationService {
   constructor(private usersService: UsersService) {}
 
-  async login(username: string, pass: string): Promise<any> {
+  async login(username: string, password: string): Promise<any> {
     const user = await this.usersService.findOne(username);
 
-    if (user?.password !== pass) {
+    if (user?.password !== password) {
       throw new UnauthorizedException();
     }
-
-    const { password, ...result } = user;
+    
     // TODO: Generate a JWT and return it here
     // instead of the user object
-    return result;
+    return user;
   }
 }
