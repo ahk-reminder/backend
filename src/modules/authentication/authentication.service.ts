@@ -11,9 +11,7 @@ export class AuthenticationService {
     if (user?.password !== password) {
       throw new UnauthorizedException();
     }
-    
-    // TODO: Generate a JWT and return it here
-    // instead of the user object
+
     return user;
   }
 }
