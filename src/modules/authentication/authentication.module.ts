@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationController } from './authentication.controller';
 import { UsersModule } from '../users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { HashService } from './services/hash.service';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, HashService],
   controllers: [AuthenticationController],
 })
 export class AuthenticationModule {}

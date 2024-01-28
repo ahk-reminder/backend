@@ -1,5 +1,5 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post } from '@nestjs/common';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './services/authentication.service';
 import { LoginDto } from './dtos/login.dto';
 import { FindOneDTO } from '../app/dtos/find-one.dto';
 
