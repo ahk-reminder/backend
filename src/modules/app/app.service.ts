@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { EMPTY_STRING } from '../../../common/utils/constants';
+import { EMPTY_STRING } from './utils/constants';
 
 @Injectable()
 export class AppService {

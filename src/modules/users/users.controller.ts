@@ -1,5 +1,5 @@
 import { Controller, HttpCode, HttpStatus, Get, Param, UseGuards } from '@nestjs/common';
-import { FindOneDTO } from '../../common/dtos/find-one.dto';
+import { FindOneDTO } from '../app/dtos/find-one.dto';
 
 import { Reflector } from '@nestjs/core';
 import { RolesGuard } from '../app/http/guards/authorization.guard';
