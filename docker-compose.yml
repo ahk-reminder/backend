@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  ahk-db:
+    image: bitnami/mariadb:10.5.8
+    container_name: ahk-db
+    ports:
+      - 3306:3306
+    restart: always
+    volumes:
+      - ahk-db-volume:/bitnami/mariadb
+    env_file:
+      - .env
+    environment:
+      - TZ=${APP_TIMEZONE}
+      - ALLOW_EMPTY_PASSWORD="no"
+      - MARIADB_SKIP_TEST_DB="yes"
+      - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MARIADB_DATABASE=${DB_DATABASE}
+      - MARIADB_USER=${DB_USERNAME}
+      - MARIADB_PASSWORD=${DB_PASSWORD}
+
+networks:
+  default:
+    name: ahk-network
+
+volumes:
+  ahk-db-volume:
+    name: ahk-db-volume
