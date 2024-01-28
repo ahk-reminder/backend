@@ -9,7 +9,7 @@ export class UsersService {
     {
       userId: 1,
       username: 'jon@server.net',
-      password: '123',
+      password: '$2b$10$nQ0.JmtFbHYI6C/YNQL96.7rrJnebnNXVTYp0/r7Y1iBNngplkboC',
     },
     {
       userId: 2,
