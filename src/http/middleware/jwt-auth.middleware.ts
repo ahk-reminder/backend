@@ -3,7 +3,8 @@ import { Request, Response, NextFunction } from 'express';
 
 @Injectable()
 export class JwtAuth implements NestMiddleware {
-  use(req: Request, res: Response, next: NextFunction) {
+  use(request: Request, response: Response, next: NextFunction) {
+    
     console.log('JWT is valid...');
     next();
   }
