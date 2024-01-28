@@ -3,7 +3,6 @@ import { AppController } from './http/controllers/app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from './http/middleware/logger.middleware';
 import { JwtAuth } from './http/middleware/jwt.middleware';
-import { AuthModule } from '../auth/auth.module';
 import { UsersModule } from '../users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,7 +10,6 @@ import { AuthenticationModule } from '../authentication/authentication.module';
 
 @Module({
   imports: [
-    AuthModule,
     AuthenticationModule,
     UsersModule,
     ConfigModule.forRoot(),
