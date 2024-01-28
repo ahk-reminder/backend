@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { LoggerMiddleware } from './http/middleware/logger.middleware';
 import { JwtAuth } from './http/middleware/jwt.middleware';
 import { UsersModule } from '../users/users.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthenticationModule } from '../authentication/authentication.module';
 
@@ -13,16 +13,20 @@ import { AuthenticationModule } from '../authentication/authentication.module';
     AuthenticationModule,
     UsersModule,
     ConfigModule.forRoot(),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'ahk',
-      password: 'Ahk0245*',
-      database: 'ahk',
-      entities: [],
-      synchronize: true,
-      migrationsRun: true,
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        type: 'mariadb',
+        host: configService.get('DB_HOST'),
+        port: configService.get('DB_PORT'),
+        username: configService.get('DB_USERNAME'),
+        password: configService.get('DB_PASSWORD'),
+        database: configService.get('DB_DATABASE'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        migrationsRun: true,
+        synchronize: false,
+      }),
+      inject: [ConfigService],
     }),
   ],
   controllers: [AppController],
