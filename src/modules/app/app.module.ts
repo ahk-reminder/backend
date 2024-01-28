@@ -6,9 +6,25 @@ import { JwtAuth } from './http/middleware/jwt.middleware';
 import { AuthModule } from '../auth/auth.module';
 import { UsersModule } from '../users/users.module';
 import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [AuthModule, UsersModule, ConfigModule.forRoot()],
+  imports: [
+    AuthModule,
+    UsersModule,
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'ahk',
+      password: 'Ahk0245*',
+      database: 'ahk',
+      entities: [],
+      synchronize: true,
+      migrationsRun: true,
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
