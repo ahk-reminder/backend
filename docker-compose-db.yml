@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  ahk-db:
+    image: postgres
+    container_name: ahk-db
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+
+networks:
+  default:
+    name: ahk-network
