@@ -1,9 +1,9 @@
 const path = require('path');
-const PATH = 'src/data-access'
+const PATH = 'src/data-access';
 
 module.exports = {
-  'config': path.resolve(`${PATH}/config`, 'cli.config.json'),
-  'models-path': path.resolve(`${PATH}/entities`),
-  'migrations-path': path.resolve(`${PATH}/migrations`),
-  'seeders-path': path.resolve(`${PATH}/seeders`)
+    'config': path.resolve(`${PATH}/config`, 'cli.config.json'),
+    'models-path': path.resolve(`${PATH}/entities`),
+    'migrations-path': path.resolve(`${PATH}/migrations`),
+    'seeders-path': path.resolve(`${PATH}/seeders`)
 };
