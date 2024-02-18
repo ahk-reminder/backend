@@ -1,4 +1,4 @@
-import { AllowNull, AutoIncrement, Column, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, Column, CreatedAt, Model, PrimaryKey, Table, Unique, UpdatedAt } from 'sequelize-typescript';
 
 @Table({
     tableName: 'user'
@@ -12,16 +12,16 @@ export class User extends Model {
 
     @AllowNull(false)
     @Column
-    firstName: string;
+    first_name: string;
 
     @AllowNull(false)
     @Column
-    lastName: string;
+    last_name: string;
 
     @Unique
     @AllowNull(false)
     @Column
-    mobileNumber: string;
+    mobile_number: string;
 
     @Unique
     @AllowNull(false)
@@ -34,5 +34,11 @@ export class User extends Model {
 
     @AllowNull(false)
     @Column({ defaultValue: true })
-    isActive: boolean;
+    is_active: boolean;
+
+    @CreatedAt
+    created_at: Date;
+
+    @UpdatedAt
+    updated_at: Date;
 }
