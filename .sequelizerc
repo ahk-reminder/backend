@@ -6,5 +6,4 @@ module.exports = {
     'models-path': path.resolve(`${PATH}/entities`),
     'migrations-path': path.resolve(`${PATH}/migrations`),
     'seeders-path': path.resolve(`${PATH}/seeders`),
-    'migrationsStorageTableName': "_migrations"
 };
