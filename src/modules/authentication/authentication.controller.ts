@@ -1,7 +1,7 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post } from '@nestjs/common';
 import { AuthenticationService } from './services/authentication.service';
 import { LoginDto } from './dtos/login.dto';
-import { FindOneDTO } from '../app/dtos/find-one.dto';
+import { FindOneDTO } from 'src/data-access/dtos/find-one.dto';
 
 @Controller({
   path: 'authentication',
@@ -13,8 +13,8 @@ export class AuthenticationController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   login(@Body() loginDto: LoginDto) {
-    const { email, password } = loginDto;
-    return this.authService.login(email, password);
+    const { mobileNumber, password } = loginDto;
+    return this.authService.login(mobileNumber, password);
   }
 
   @Get('users/:id')
