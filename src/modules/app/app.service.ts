@@ -3,7 +3,6 @@ import { ConfigService } from '@nestjs/config';
 import { EMPTY_STRING } from './utils/constants';
 import { Sequelize } from 'sequelize-typescript';
 
-
 @Injectable()
 export class AppService {
   constructor(
