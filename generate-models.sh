@@ -1,0 +1,1 @@
+npx sequelize-auto --dialect postgres --database ahk --host 127.0.0.1 --user ahk --port 5433 --pass Ahk0245* --schema "public" --skipTables "_migrations" --views --output "./src/data-access/entities" --lang ts --caseFile k --caseModel p --caseProp c --singularize --useDefine
