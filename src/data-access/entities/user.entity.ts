@@ -1,25 +1,38 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, Column, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
 
-@Table
+@Table({
+    tableName: 'user'
+})
 export class User extends Model {
-    @Column({ primaryKey: true })
+    @PrimaryKey
+    @AutoIncrement
+    @AllowNull(false)
+    @Column
     id: number;
 
+    @AllowNull(false)
     @Column
     firstName: string;
 
+    @AllowNull(false)
     @Column
     lastName: string;
 
+    @Unique
+    @AllowNull(false)
     @Column
     mobileNumber: string;
 
+    @Unique
+    @AllowNull(false)
     @Column
     email: string;
 
+    @AllowNull(false)
     @Column
     password: string;
 
+    @AllowNull(false)
     @Column({ defaultValue: true })
     isActive: boolean;
 }
