@@ -28,9 +28,9 @@ export class UserRepository {
 
     
     async findByMobileNumber(mobileNumber: number): Promise<User | null> {
-        return this.entity.findOne({
+        return await this.entity.findOne({
             where: {
-                mobileNumber,
+                mobile_number: mobileNumber,
             },
         });
     }
