@@ -5,5 +5,6 @@ module.exports = {
     'config': path.resolve(`${PATH}/config`, 'cli.config.json'),
     'models-path': path.resolve(`${PATH}/entities`),
     'migrations-path': path.resolve(`${PATH}/migrations`),
-    'seeders-path': path.resolve(`${PATH}/seeders`)
+    'seeders-path': path.resolve(`${PATH}/seeders`),
+    'migrationsStorageTableName': "_migrations"
 };
