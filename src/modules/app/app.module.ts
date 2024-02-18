@@ -7,7 +7,6 @@ import { JwtAuth } from './http/middleware/jwt.middleware';
 import { UsersModule } from '../users/users.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthenticationModule } from '../authentication/authentication.module';
-import { User } from 'src/data-access/entities/user.entity';
 
 @Module({
   imports: [
