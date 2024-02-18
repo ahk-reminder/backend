@@ -2,28 +2,49 @@ version: '3.8'
 
 services:
   ahk-db:
-    image: bitnami/mariadb:10.5.8
+    image: postgres
     container_name: ahk-db
-    ports:
-      - 3306:3306
     restart: always
-    volumes:
-      - ahk-db-volume:/bitnami/mariadb
     env_file:
       - .env
     environment:
-      - TZ=${APP_TIMEZONE}
-      - ALLOW_EMPTY_PASSWORD="no"
-      - MARIADB_SKIP_TEST_DB="yes"
-      - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-      - MARIADB_DATABASE=${DB_DATABASE}
-      - MARIADB_USER=${DB_USERNAME}
-      - MARIADB_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+
+  ahk-pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    container_name: ahk-pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - '5050:80'
+    depends_on:
+      - ahk-db
+
+  ahk-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ahk-backend
+    ports:
+      - 3000:3000
+    restart: always
+    volumes:
+      - ./src:/app/src
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - ahk-db
 
 networks:
   default:
     name: ahk-network
-
-volumes:
-  ahk-db-volume:
-    name: ahk-db-volume
