@@ -39,5 +39,6 @@ lerna-debug.log*
 .env.testing
 .env.development
 .env.production
+src/data-access/config/cli.config.json
 
 pgdata
